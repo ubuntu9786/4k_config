@@ -14,7 +14,7 @@ local os, math, string = os, math, string
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow"
-theme.wallpaper                                 = os.getenv("HOME") .. "/Pictures/wallpapers/suse.jpg"
+theme.wallpaper                                 = os.getenv("HOME") .. "/.config/awesome/suse.jpg"
 theme.font                                      = "CozetteVector 9"
 theme.fg_normal                                 = "#FEFEFE"
 theme.fg_focus                                  = "#32D6FF"
