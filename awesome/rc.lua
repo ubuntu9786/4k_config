@@ -314,18 +314,18 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey, }, "p", function () awful.spawn("redshift -x") end),
 -- Brightness
 
-        awful.key({ }, "XF86MonBrightnessDown", function ()
-             awful.util.spawn("xbacklight - 5") end),
-         awful.key({ }, "XF86MonBrightnessUp", function ()
-             awful.util.spawn("xbacklight + 5") end),
+        awful.key({ altkey }, "Left", function ()
+             awful.util.spawn("xrandr --output eDP-1 --brightness 0.3") end),
+         awful.key({ altkey }, "Right", function ()
+             awful.util.spawn("xrandr --output eDP-1 --brightness 1") end),
 
 -- Volume
-        awful.key({ }, "XF86AudioLowerVolume", function ()
-             awful.util.spawn("pamixer -d 2") end),
-         awful.key({ }, "XF86AudioRaiseVolume", function ()
-             awful.util.spawn("pamixer -i 2") end),
-         awful.key({ }, "XF86AudioMute", function ()
-             awful.util.spawn("pamixer -t") end),
+--        awful.key({ }, "XF86AudioLowerVolume", function ()
+--             awful.util.spawn("pamixer -d 2") end),
+--         awful.key({ }, "XF86AudioRaiseVolume", function ()
+--             awful.util.spawn("pamixer -i 2") end),
+--         awful.key({ }, "XF86AudioMute", function ()
+--             awful.util.spawn("pamixer -t") end),
 
 
     -- On the fly useless gaps change
@@ -386,12 +386,12 @@ globalkeys = awful.util.table.join(
     -- ALSA volume control
     awful.key({ altkey }, "Up",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
+            os.execute(string.format("amixer -q set %s 10%%+", beautiful.volume.channel))
             beautiful.volume.update()
         end),
     awful.key({ altkey }, "Down",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
+            os.execute(string.format("amixer -q set %s 10%%-", beautiful.volume.channel))
             beautiful.volume.update()
         end),
     awful.key({ altkey }, "m",
