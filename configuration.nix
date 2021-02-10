@@ -82,8 +82,13 @@
     pkgs.gitAndTools.gitFull
     pkgs.ranger
     pkgs.gnome3.nautilus
+    dmenu
+    brightnessctl
   ];
  nixpkgs.config.allowUnfree = true;
+# Enable Flatpak
+xdg.portal.enable = true; # only needed if you are not doing Gnome
+services.flatpak.enable = true;
 
 # power
 powerManagement.enable = true;
