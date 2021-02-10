@@ -77,7 +77,7 @@ awful.layout.layouts = {
     --awful.layout.suit.tile.top,
     --awful.layout.suit.fair,
     --awful.layout.suit.fair.horizontal,
-    --awful.layout.suit.spiral,
+    awful.layout.suit.spiral,
     --awful.layout.suit.spiral.dwindle,
     --awful.layout.suit.max,
     --awful.layout.suit.max.fullscreen,
@@ -298,8 +298,9 @@ globalkeys = awful.util.table.join(
     end),
 
 -- Rofi Launcher 
-        awful.key({ modkey, }, ",", function () awful.spawn("rofi -show drun") end),
-
+--        awful.key({ modkey, }, ",", function () awful.spawn("rofi -show drun") end),
+-- Using drun for scaling issues on 4k
+        awful.key({ modkey, }, ",", function () awful.spawn("dmenu_run") end),
 -- Arandr DisplaySettings shortcut
         awful.key({ modkey, }, "d", function () awful.spawn("arandr") end),
 
@@ -314,10 +315,10 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey, }, "p", function () awful.spawn("redshift -x") end),
 -- Brightness
 
-        awful.key({ altkey }, "Left", function ()
-             awful.util.spawn("xrandr --output eDP-1 --brightness 0.3") end),
-         awful.key({ altkey }, "Right", function ()
-             awful.util.spawn("xrandr --output eDP-1 --brightness 1") end),
+        awful.key({ altkey }, "=", function ()
+             awful.util.spawn("brightnessctl -d intel_backlight set +80") end),
+         awful.key({ altkey }, "-", function ()
+             awful.util.spawn("brightnessctl -d intel_backlight set 80-") end),
 
 -- Volume
 --        awful.key({ }, "XF86AudioLowerVolume", function ()

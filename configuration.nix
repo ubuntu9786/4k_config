@@ -1,7 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
+# Welcome to the Liam NixOS config that honestly is mostly stock with awesomewm jammed in
 { config, pkgs, ... }:
 
 {
@@ -17,23 +14,20 @@
   # boot.loader.grub.efiInstallAsRemovable = true;
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
- boot.loader.grub.device = "/dev/vda"; # or "nodev" for efi only
+ boot.loader.grub.device = "/dev/nvme0n1"; # or "nodev" for efi only
 
- networking.hostName = "nixos"; # Define your hostname.
+ networking.hostName = "liam-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
-  time.timeZone = "America/Denver";
+  time.timeZone = "America/Los_Angeles";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp1s0.useDHCP = true;
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  networking.interfaces.wlp2s0.useDHCP = true;
+  networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -42,18 +36,19 @@
   #   keyMap = "us";
   # };
 
-  # Enable the GNOME 3 Desktop Environment.
+  # Enable the GNOME 3 Desktop Environment and awesomewm.
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
-  #services.xserver.desktopManager.gnome3.enable = true;
+  services.xserver.desktopManager.gnome3.enable = true;
   services.xserver.windowManager.awesome.enable = true;
+
+#enable light brightness control (I dont think this works right)
+ # programs.light.enable = true;
 
   #Configure keymap in X11
   #services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
  #  Enable sound.
   sound.enable = true;
@@ -61,13 +56,10 @@
 
 #   Set Fish as shell
  programs.fish.enable = true;
-	users.users.foo = {
-	shell = pkgs.fish;
+ users.users.liam = {
+ shell = pkgs.fish;
   };
 
-
-  # Enable touchpad support (enabled default in most desktopManager).
- # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.liam = {
@@ -77,7 +69,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs; [
     wget vim
     firefox
     rofi
@@ -91,6 +83,29 @@
     pkgs.ranger
     pkgs.gnome3.nautilus
   ];
+ nixpkgs.config.allowUnfree = true;
+
+# power
+powerManagement.enable = true;
+powerManagement.powertop.enable = true;
+services.tlp.enable = true;
+#services.thermald.enable = true; 
+#services.logind.lidSwitch = "suspend";
+
+# Mouse Testers
+  services.xserver.libinput = {
+    enable = true;
+    naturalScrolling = true;
+    tapping = true;
+    tappingDragLock = false;
+    middleEmulation = true;
+    accelSpeed = "0.5";
+  };
+
+# Graphics
+#  services.xserver.videoDrivers = [ "nvidia" ];
+#  services.xserver.deviceSection = ''Option "TearFree" "true"'';
+  programs.light.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
