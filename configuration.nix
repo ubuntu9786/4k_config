@@ -79,9 +79,16 @@
     dmenu
     brightnessctl
     pkgs.zathura
+    pkgs.picom
   ];
  nixpkgs.config.allowUnfree = true;
- # Enable Flatpak
+ 
+# Fonts to install
+  fonts.fonts = with pkgs; [
+	(nerdfonts.override {fonts = [ "Terminus" ]; })
+];
+
+# Enable Flatpak
     xdg.portal.enable = true; # only needed if you are not doing Gnome
     services.flatpak.enable = true;
 

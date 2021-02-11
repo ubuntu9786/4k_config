@@ -1,9 +1,9 @@
 
 --[[
                                        
-     Awesome WM configuration template 
-     github.com/copycat-killer         
-                                       
+   Liam's heavily modified Awesome/Copycat rc.lua that will now only work with "powerarrow" 
+
+
 --]]
 
 -- {{{ Required libraries
@@ -68,7 +68,7 @@ local gui_editor   = "gvim"
 local browser      = "firefox"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "web", "trav", "mot", "para", "autre", }
+awful.util.tagnames = { "1", "2", "3", "4", "5", }
 awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
@@ -297,8 +297,6 @@ globalkeys = awful.util.table.join(
         end
     end),
 
--- Rofi Launcher 
---        awful.key({ modkey, }, ",", function () awful.spawn("rofi -show drun") end),
 -- Using drun for scaling issues on 4k
         awful.key({ modkey, }, ",", function () awful.spawn("dmenu_run") end),
 -- Arandr DisplaySettings shortcut
@@ -411,40 +409,6 @@ globalkeys = awful.util.table.join(
             beautiful.volume.update()
         end),
 
-    -- MPD control
-    awful.key({ altkey, "Control" }, "Up",
-        function ()
-            awful.spawn.with_shell("mpc toggle")
-            beautiful.mpd.update()
-        end),
-    awful.key({ altkey, "Control" }, "Down",
-        function ()
-            awful.spawn.with_shell("mpc stop")
-            beautiful.mpd.update()
-        end),
-    awful.key({ altkey, "Control" }, "Left",
-        function ()
-            awful.spawn.with_shell("mpc prev")
-            beautiful.mpd.update()
-        end),
-    awful.key({ altkey, "Control" }, "Right",
-        function ()
-            awful.spawn.with_shell("mpc next")
-            beautiful.mpd.update()
-        end),
-    awful.key({ altkey }, "0",
-        function ()
-            local common = { text = "MPD widget ", position = "top_middle", timeout = 2 }
-            if beautiful.mpd.timer.started then
-                beautiful.mpd.timer:stop()
-                common.text = common.text .. lain.util.markup.bold("OFF")
-            else
-                beautiful.mpd.timer:start()
-                common.text = common.text .. lain.util.markup.bold("ON")
-            end
-            naughty.notify(common)
-        end),
-
     -- Copy primary to clipboard (terminals to gtk)
     awful.key({ modkey }, "c", function () awful.spawn("xsel | xsel -i -b") end),
     -- Copy clipboard to primary (gtk to terminals)
@@ -454,18 +418,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "e", function () awful.spawn(gui_editor) end),
     awful.key({ modkey }, "q", function () awful.spawn(browser) end),
 
-    -- Default
-    --[[ Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
-    --]]
-    --[[ dmenu
-    awful.key({ modkey }, "x", function ()
-        awful.spawn(string.format("dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
-        beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
-		end)
-    --]]
-    -- Prompt
+-- Prompt
     awful.key({ modkey }, "r", function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
@@ -594,13 +547,6 @@ awful.rules.rules = {
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
       properties = { titlebars_enabled = false } },
-
-    -- Set Firefox to always map on the first tag on screen 1.
---    { rule = { class = "Firefox" },
---      properties = { screen = 1, tag = screen[1].tags[1] } },
---
---    { rule = { class = "Gimp", role = "gimp-image-window" },
---          properties = { maximized = true } },
 }
 -- }}}
 
@@ -669,9 +615,6 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 
---    /etc/mpd.conf 
-
-
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
     if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
@@ -697,7 +640,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 autorun = true
 autorunApps =
 {
-    "compton",
+    "picom",
 --    "nitrogen --restore",
     "setxkbmap -option ctrl:swapcaps"
 --    "setxkbmap us"
@@ -718,17 +661,4 @@ if beautiful.border_radius ~= 0 then
             end
         end
     end)
-
-    -- Fullscreen clients should not have rounded corners
---    client.connect_signal("property::fullscreen", function (c)
---        if c.fullscreen then
---            c.shape = function(cr, w, h)
---                gears.shape.rectangle(cr, width, height)
---            end
---        else
---            c.shape = function(cr, w, h)
---                gears.shape.rounded_rect(cr, w, h, beautiful.border_radius)
---            end
---        end
---    end)
 end
