@@ -17,7 +17,7 @@
  boot.loader.grub.device = "/dev/nvme0n1"; # or "nodev" for efi only
 
  networking.hostName = "liam-nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -39,32 +39,25 @@
   # Enable the GNOME 3 Desktop Environment and awesomewm.
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome3.enable = true;
+  # services.xserver.desktopManager.gnome3.enable = true;
   services.xserver.windowManager.awesome.enable = true;
 
-#enable light brightness control (I dont think this works right)
- # programs.light.enable = true;
-
-  #Configure keymap in X11
-  #services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-
+ 
  #  Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-#   Set Fish as shell
- programs.fish.enable = true;
- users.users.liam = {
- shell = pkgs.fish;
+ # Set Fish as shell
+   programs.fish.enable = true;
+   users.users.liam = {
+   shell = pkgs.fish;
   };
 
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.liam = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
   };
 
   # List packages installed in system profile. To search, run:
@@ -73,6 +66,7 @@
     wget vim
     firefox
     rofi
+    autorandr
     pkgs.neofetch
     pkgs.awesome
     pkgs.lxappearance
@@ -84,20 +78,21 @@
     pkgs.gnome3.nautilus
     dmenu
     brightnessctl
+    pkgs.zathura
   ];
  nixpkgs.config.allowUnfree = true;
-# Enable Flatpak
-xdg.portal.enable = true; # only needed if you are not doing Gnome
-services.flatpak.enable = true;
+ # Enable Flatpak
+    xdg.portal.enable = true; # only needed if you are not doing Gnome
+    services.flatpak.enable = true;
 
-# power
+ # power
 powerManagement.enable = true;
 powerManagement.powertop.enable = true;
 services.tlp.enable = true;
 #services.thermald.enable = true; 
 #services.logind.lidSwitch = "suspend";
 
-# Mouse Testers
+# Trackpad settings
   services.xserver.libinput = {
     enable = true;
     naturalScrolling = true;
@@ -107,9 +102,9 @@ services.tlp.enable = true;
     accelSpeed = "0.5";
   };
 
-# Graphics
-#  services.xserver.videoDrivers = [ "nvidia" ];
-#  services.xserver.deviceSection = ''Option "TearFree" "true"'';
+ # Graphics
+ # services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.deviceSection = ''Option "TearFree" "true"'';
   programs.light.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
