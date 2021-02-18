@@ -90,6 +90,11 @@
     brightnessctl
     pkgs.zathura
     pkgs.python39
+    gotop
+    polybar
+    pywal
+    scrot
+    unzip
   ];
  nixpkgs.config.allowUnfree = true;
  
@@ -107,13 +112,13 @@
     #services.logind.lidSwitch = "suspend";
 
  # Trackpad settings
-  services.xserver.libinput = {
+  services.xserver.libinput= {
     enable = true;
-    naturalScrolling = true;
-    tapping = true;
-    tappingDragLock = false;
-    middleEmulation = true;
-    accelSpeed = "0.5";
+    touchpad.naturalScrolling = true;
+    touchpad.tapping = true;
+    touchpad.tappingDragLock = false;
+    touchpad.middleEmulation = true;
+    touchpad.accelSpeed = "0.5";
   };
    # List services that you want to enable:
 
