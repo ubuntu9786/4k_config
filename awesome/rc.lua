@@ -306,7 +306,7 @@ globalkeys = awful.util.table.join(
         awful.key({ modkey, }, "/", function () awful.spawn("networkmanager_dmenu") end),
 
 -- Lockscreen
-	awful.key({ modkey, }, "l", function () awful.spawn("dm-tool lock") end),
+	awful.key({ modkey, }, "l", function () awful.spawn("i3lock --color=1C2C30") end),
 
 -- Redshift Hotkey
 	awful.key({ modkey, }, "t", function () awful.spawn("redshift -O 3500") end),
@@ -314,9 +314,9 @@ globalkeys = awful.util.table.join(
 -- Brightness
 
         awful.key({ altkey }, "=", function ()
-             awful.util.spawn("brightnessctl -d intel_backlight set +80") end),
+             awful.util.spawn("brightnessctl -d intel_backlight set +30") end),
          awful.key({ altkey }, "-", function ()
-             awful.util.spawn("brightnessctl -d intel_backlight set 80-") end),
+             awful.util.spawn("brightnessctl -d intel_backlight set 30-") end),
 
 -- Volume
 --        awful.key({ }, "XF86AudioLowerVolume", function ()
@@ -641,7 +641,7 @@ autorun = true
 autorunApps =
 {
     "picom",
---    "nitrogen --restore",
+    "./config/polybar/./launch.sh --material",
     "setxkbmap -option ctrl:swapcaps"
 --    "setxkbmap us"
 --    "redshift -o 3500"	    	
