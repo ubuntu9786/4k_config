@@ -67,6 +67,7 @@
     environment.systemPackages = with pkgs; [
     wget
     vim
+    spacevim
   # Window Management
     rofi
     autorandr
@@ -83,7 +84,6 @@
     pciutils
     brightnessctl
   # File management
-    pkgs.ubuntu_font_family
     pkgs.ranger
     pkgs.gnome3.nautilus
     pkgs.gitAndTools.gitFull
@@ -91,8 +91,9 @@
     unzip
     feh
   # Misc
-    pkgs.neofetch
     scrot
+    pfetch
+  # Fonts 
   ];
  nixpkgs.config.allowUnfree = true;
  
@@ -119,7 +120,7 @@
 
 
  # Change the kernal version
-   boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
 
  # Trackpad settings

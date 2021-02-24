@@ -640,10 +640,10 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 autorun = true
 autorunApps =
 {
-    "picom",
+--    "picom",
     "./config/polybar/./launch.sh --material",
     "setxkbmap -option ctrl:swapcaps"
---    "setxkbmap us"
+    "nitrogen --restore"
 --    "redshift -o 3500"	    	
 }
 if autorun then
