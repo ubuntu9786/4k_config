@@ -1,18 +1,20 @@
 # 4k_config
 
 So here we are, the .dotfiles for my computer. These ones are meant to be run on an hidpi display and while some things will auto adjust to scale with smaller 
-displays, some of these things will not. 
+displays, some of these things will not. I am running this currently on a Dell XPS 9550 with a 4k screen. If I change computers
+I will likely make a separate repo for the non hidpi screens as to get here I have confused myself a little bit. 
 
+## Here are some very productive looking screenshots
 
 
 ![Pretend busy](https://github.com/ubuntu9786/4k_config/blob/main/screens/screen1.png?raw=true)
 
-And here is just a desktop with some floating windows, naturally as its a dynamically tiling window manager. 
 
 ![desktop](https://github.com/ubuntu9786/4k_config/blob/main/screens/screen2.png?raw=true)
 
 
-#Installation!
+
+# Installation!
 
 So this is where my lack of actual knowledge really begins to show. The install for most of this is... pretty manual to put it lightly. 
 
