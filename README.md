@@ -27,15 +27,9 @@ The cloning can be done with ```git clone https://github.com/ubuntu9786/4k_confi
 1. Open both the default configuration.nix and mine as root
 2. Copy everything below the clearly marked line into the default configuration.nix overwriting everything except the networking part
 3. Ensure that the parts above the line in my config are in the soon to be yours, albeit with the proper driver information/user/whatever else you changed.
-4. You can create a root password during the install, then with the following 
-
-```nix-enter --root '/mnt'``` 
-
-as well and then set a password for the user you created with
-
+4. You can create a root password during the install, then with the following ```nix-enter --root '/mnt'``` as well and then set a password for the user you created with 
 ```passwd <user>```
-
-This will allow for you to just be able to log into the user that you created after the install is done instead of having to login as root in a tty or through the user in gdm. 
+  This will allow for you to just be able to log into the user that you created after the install is done instead of having to login as root in a tty or through the user in gdm. 
 5. Bam! Install!! (with whatever command is stated in the NixOS manual) 
 
 After rebooting, creating a root password, logging in as root and setting your user password, do as follows: 
