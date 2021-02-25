@@ -59,7 +59,7 @@ run_once({ "urxvtd", "unclutter -root" })
 -- }}}
 
 -- {{{ Variable definitions
-local chosen_theme = "powerarrow"
+local chosen_theme = "powerarrow-dark"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "kitty"
@@ -643,7 +643,7 @@ autorunApps =
 --    "picom",
     "./config/polybar/./launch.sh --material",
     "setxkbmap -option ctrl:swapcaps"
-    "nitrogen --restore"
+--    "nitrogen --restore"
 --    "redshift -o 3500"	    	
 }
 if autorun then

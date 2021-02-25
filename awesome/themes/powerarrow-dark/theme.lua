@@ -14,8 +14,9 @@ local os    = { getenv = os.getenv }
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-dark"
-theme.wallpaper                                 = os.getenv("HOME") .. "/Pictures/Wallpapers/ibmc.jpg" 
-theme.font                                      = "Misc Tamsyn Regular 9"
+theme.wallpaper                                 = os.getenv("HOME") .. "/.config/awesome/walls/nix.svg"
+--theme.font                                      = "Misc Tamsyn Regular 9"
+theme.font                                      = "TerminessTTF Nerd Font Mono 9"
 theme.fg_normal                                 = "#DDDDFF"
 theme.fg_focus                                  = "#EA6F81"
 theme.fg_urgent                                 = "#CC9393"
@@ -66,7 +67,7 @@ theme.widget_mail                               = theme.dir .. "/icons/mail.png"
 theme.widget_mail_on                            = theme.dir .. "/icons/mail_on.png"
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
-theme.useless_gap                               = 5 
+theme.useless_gap                               = 15 
 theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
 theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_ontop_button_focus_active        = theme.dir .. "/icons/titlebar/ontop_focus_active.png"

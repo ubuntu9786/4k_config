@@ -7,6 +7,7 @@
       ./hardware-configuration.nix
     ];
 
+
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
@@ -17,6 +18,10 @@
   networking.useDHCP = false;
   networking.interfaces.wlp2s0.useDHCP = true;
   networking.networkmanager.enable = true;
+
+
+############### REPLACE FROM HERE UP WITH INFORMATION SPECIFIC TO EACH BUILD ###################
+
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -37,7 +42,7 @@
     vSync = true;
     };
 
- # Graphics
+  # Graphics
   services.xserver.videoDrivers = [ "modsetting" ];
   services.xserver.useGlamor = true;
   services.xserver.deviceSection = ''Option "TearFree" "true"'';
@@ -45,11 +50,11 @@
   hardware.nvidiaOptimus.disable = true;
  
  
- #  Enable sound.
+  # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
- # Set Fish as shell
+  # Set Fish as shell
    programs.fish.enable = true;
    users.users.liam = {
    shell = pkgs.fish;
@@ -68,7 +73,7 @@
     wget
     vim
     spacevim
-  # Window Management
+    # Window Management
     rofi
     autorandr
     dmenu
@@ -76,24 +81,23 @@
     pkgs.lxappearance
     pywal
     polybar
-  # System Applications
+    # System Applications
     pkgs.kitty
     pkgs.python39
     gotop
     pkgs.arandr
     pciutils
     brightnessctl
-  # File management
+    # File management
     pkgs.ranger
     pkgs.gnome3.nautilus
     pkgs.gitAndTools.gitFull
     pkgs.zathura
     unzip
     feh
-  # Misc
+    # Misc
     scrot
     pfetch
-  # Fonts 
   ];
  nixpkgs.config.allowUnfree = true;
  
@@ -121,6 +125,10 @@
 
  # Change the kernal version
   # boot.kernelPackages = pkgs.linuxPackages_latest;
+  
+ # Splash screen
+  boot.plymouth.enable = true;
+  boot.plymouth.theme = "breeze";
 
 
  # Trackpad settings
@@ -132,18 +140,18 @@
     touchpad.middleEmulation = true;
     touchpad.accelSpeed = "0.5";
   };
-   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
-  # This value determines the NixOS release from which the default
+ # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.09"; # Did you read the comment?
-
+  system.autoUpgrade = {
+       enable = true;
+       channel = https://nixos.org/channels/nixos-unstable;
+       };
 }
 
