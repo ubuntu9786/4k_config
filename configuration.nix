@@ -89,11 +89,11 @@
     fade = true; 
     inactiveOpacity = 0.9;
     shadow = true;
-    fadeDelta = 1;
+    fadeDelta = 1; 
     vSync = true;
     };
 
- # Set Fish as shell
+  # Set Fish as shell
    programs.fish.enable = true;
    users.users.liam = {
    shell = pkgs.fish;
@@ -110,7 +110,6 @@
     dmenu
     i3lock
     pkgs.lxappearance
-    pywal
     polybar
     # System Applications
     pkgs.kitty
@@ -132,7 +131,7 @@
   ];
      nixpkgs.config.allowUnfree = true;
  
- # Fonts to install
+ # Fonts
   fonts.fonts = with pkgs; [
 	(nerdfonts.override {fonts = [ "Terminus" ]; })
       ];
