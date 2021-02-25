@@ -10,7 +10,7 @@ I will likely make a separate repo for the non hidpi screens as to get here I ha
 ![Pretend busy](https://github.com/ubuntu9786/4k_config/blob/main/screens/screen1.png?raw=true)
 
 
-![desktop](https://github.com/ubuntu9786/4k_config/blob/main/screens/screen2.png?raw=true)
+![desktop](https://github.com/ubuntu9786/4k_config/blob/main/screens/screen3.png?raw=true)
 
 
 
