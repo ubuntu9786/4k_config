@@ -14,9 +14,9 @@ local os    = { getenv = os.getenv }
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-dark"
-theme.wallpaper                                 = os.getenv("HOME") .. "/.config/awesome/walls/nix.svg"
+theme.wallpaper                                 = os.getenv("HOME") .. "/.config/awasome/walls/fire.jpg"
 --theme.font                                      = "Misc Tamsyn Regular 9"
-theme.font                                      = "TerminessTTF Nerd Font Mono 9"
+theme.font                                      = "TerminessTTF Nerd Font Mono 10"
 theme.fg_normal                                 = "#DDDDFF"
 theme.fg_focus                                  = "#EA6F81"
 theme.fg_urgent                                 = "#CC9393"
@@ -277,7 +277,7 @@ function theme.at_screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 18, bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "bottom", screen = s, height = 24, bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
