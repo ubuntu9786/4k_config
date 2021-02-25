@@ -12,7 +12,7 @@ And here is just a desktop with some floating windows, naturally as its a dynami
 ![desktop](https://github.com/ubuntu9786/4k_config/blob/main/screens/screen2.png?raw=true)
 
 
-Installation!
+#Installation!
 
 So this is where my lack of actual knowledge really begins to show. The install for most of this is... pretty manual to put it lightly. 
 
@@ -27,9 +27,9 @@ Bam! Install!
 
 After rebooting, creating a root password, logging in as root and setting your user password, do as follows: 
 
-1. git clone the repo again
+1. ```git clone https://github.com/ubuntu9786/4k_config.git``` 
 2. open it up in nautilus or ranger or whatever
-3. place .Xresources and .xinirc in home foler
-4. place everything else in .config. If you dont have a .config directory, make one please. 
+3. place .Xresources and .xinirc in home folder
+4. place everything else in .config. If you dont have a .config directory, make one please. ```mkdir ~/.config``` 
 
 Restart AwesomeWM and you're then rocking my dots. 
