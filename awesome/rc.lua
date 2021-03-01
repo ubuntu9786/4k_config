@@ -642,7 +642,7 @@ autorunApps =
 {
 --    "picom",
     "./config/polybar/./launch.sh --material",
-    "setxkbmap -option ctrl:swapcaps"
+--    "setxkbmap -option ctrl:swapcaps"
 --    "nitrogen --restore"
 --    "redshift -o 3500"	    	
 }

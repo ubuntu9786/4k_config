@@ -56,7 +56,11 @@
   # Graphics
   services.xserver.videoDrivers = [ "modsetting" ];
   services.xserver.useGlamor = true;
-  services.xserver.deviceSection = ''Option "TearFree" "true"'';
+  services.xserver.deviceSection = ''Option 
+    "TearFree"
+    "DRI"
+    "2"
+    "true"'';
   programs.light.enable = true;
   hardware.nvidiaOptimus.disable = true;
  
@@ -84,6 +88,7 @@
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.windowManager.awesome.enable = true;
+  services.xserver.windowManager.leftwm.enable = true;
   services.picom = {
     enable = true;
     fade = true; 
@@ -140,9 +145,9 @@
 
 # NixOS Configuration 
   system.stateVersion = "20.09"; # Did you read the comment?
-  system.autoUpgrade = {
-       enable = true;
-       channel = https://nixos.org/channels/nixos-unstable;
-       };
+  #system.autoUpgrade = {
+  #     enable = true;
+  #     channel = https://nixos.org/channels/nixos-unstable;
+  #     };
 }
 
