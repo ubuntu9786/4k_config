@@ -88,7 +88,6 @@
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.windowManager.awesome.enable = true;
-  services.xserver.windowManager.leftwm.enable = true;
   services.picom = {
     enable = true;
     fade = true; 
@@ -97,6 +96,17 @@
     fadeDelta = 1; 
     vSync = true;
     };
+
+  # Enable XMonad
+  services.xserver.windowManager.xmonad = {
+	enable = true;
+	extraPackages = hpkgs: [
+   	  hpkgs.xmonad
+	  hpkgs.xmonad-contrib
+	  hpkgs.xmonad-extras
+	  ];
+  };
+
 
   # Set Fish as shell
    programs.fish.enable = true;
